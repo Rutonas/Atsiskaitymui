@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Mano projektai
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'library/user_books.css'%}">
+{% endblock %}
+
+{% block content %}
+<h3>Mano projektai</h3>
+{% if bookinstance_list %}
+<ul>
+    {% for bookinst in bookinstance_list %}
+    <li class="{% if bookinst.is_overdue %} text-danger {% endif %}">
+        <a href="{% url 'book_detail' bookinst.book.pk %}">{{bookinst.book.title}}</a>({{bookinst.due_back}})
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Šiuo metu jūs nedirbate prie jokių projektų.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Welcome to my Project!
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'library/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<h1>Sveiki atvykę į projektų karusėlę</h1>
+<h4>Šiuo metu turime tiek projektų:</h4>
+<ul>
+    <li>Projektų: {{num_books }}</li>
+    <li>Dirbama ties: {{ num_instances }}</li>
+    <li>Nepradėtų darbų: {{ num_instances_available }}</li>
+    <li>Užsakovų: {{ num_authors }}</li>
+</ul>
+{% comment 'pavyzdys' %}
+
+{% endcomment %}
+
+<p>Jūs čia lankotės {{num_visits }}-ą kartą. </p>
+
+{# vienos eilutės pavyzdys #}
+{% endblock %}
