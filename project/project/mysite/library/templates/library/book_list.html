@@ -12,9 +12,9 @@ Visi projektai
     <div class="col-md-4 d-flex align-items-stretch">
         <div class="card mb-4 shadow-sm">
             {% if book.cover %}
-            <img src="{{ book.cover.url}}" class="card-img-top" alt="...">
+            <img src="{{ book.cover.url}}" class="card-img-top" width="auto" height="auto" alt="...">
             {% else %}
-            <img src="{% static 'images/no-image.png'%}" class="card-img-top">
+            <img src="{% static 'images/no-image.png'%}" width="auto" height="auto" class="card-img-top" >
             {% endif %}
             <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
