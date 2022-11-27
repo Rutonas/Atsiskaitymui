@@ -7,7 +7,7 @@ from django.views.generic.edit import FormMixin
 from .forms import BookReviewForm
 from .models import Book, BookInstance, Author
 from django.contrib.auth.forms import User
-from django.views.decorators.csrf import  csrf_protect
+from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 
 # Create your views here.
@@ -115,23 +115,23 @@ class LoanBooksListView(LoginRequiredMixin, generic.ListView):
 @csrf_protect
 def register(request):
     if request.method == 'POST':
+        #pasiimti duomenis iš formos
         username = request.POST['username']
-        email = request.POST['email']
+        email = request.POST ['email']
         password = request.POST['password']
         password2 = request.POST['password2']
         if password == password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, f'Vartotojas {username} jau uzimtas')
+                messages.error(request, f'Vartotojas {username} jau užimtas!')
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, f'Vartotojas su el.pastu {email} jau egzistuoja')
+                    messages.error(request, f'Vartotojas su el.paštu {email} jau egizstuoja!')
                     return redirect('register')
                 else:
-                    User.object.create_user(username=username, email=email, password=password)
-                    return redirect('login')
+                    User.objects.create_user(username=username, email=email, password=password)
+                    return render(request, 'library/welcome.html')
         else:
-            messages.error(request, 'Slaptazodis nesutampa')
+            messages.error(request, 'Slaptažodžiai nesutampa!')
             return redirect('register')
     return render(request, 'library/register.html')
-

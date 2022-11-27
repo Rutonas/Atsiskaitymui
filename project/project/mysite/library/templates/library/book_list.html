@@ -4,6 +4,10 @@
 Visi projektai
 {% endblock %}
 
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'library/book-details.css'%}">
+{% endblock %}
+
 {% block content %}
 <h1>Projektų sąrašas</h1>
 {% if my_book_list %}
@@ -14,7 +18,7 @@ Visi projektai
             {% if book.cover %}
             <img src="{{ book.cover.url}}" class="card-img-top" width="auto" height="auto" alt="...">
             {% else %}
-            <img src="{% static 'images/no-image.png'%}" width="auto" height="auto" class="card-img-top" >
+            <img src="{% static 'images/no-image.png'%}"  class="card-img-top" >
             {% endif %}
             <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
